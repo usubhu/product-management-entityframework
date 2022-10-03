@@ -1,0 +1,13 @@
+E:\Subhash\Development\FoodStore-master\FoodStore-master\Shop.Service\bin\Debug\netcoreapp2.2\Shop.Service.deps.json
+E:\Subhash\Development\FoodStore-master\FoodStore-master\Shop.Service\bin\Debug\netcoreapp2.2\Shop.Service.dll
+E:\Subhash\Development\FoodStore-master\FoodStore-master\Shop.Service\bin\Debug\netcoreapp2.2\Shop.Service.pdb
+E:\Subhash\Development\FoodStore-master\FoodStore-master\Shop.Service\bin\Debug\netcoreapp2.2\Shop.Data.dll
+E:\Subhash\Development\FoodStore-master\FoodStore-master\Shop.Service\bin\Debug\netcoreapp2.2\Shop.Data.pdb
+E:\Subhash\Development\FoodStore-master\FoodStore-master\Shop.Service\obj\Debug\netcoreapp2.2\Shop.Service.csproj.AssemblyReference.cache
+E:\Subhash\Development\FoodStore-master\FoodStore-master\Shop.Service\obj\Debug\netcoreapp2.2\Shop.Service.GeneratedMSBuildEditorConfig.editorconfig
+E:\Subhash\Development\FoodStore-master\FoodStore-master\Shop.Service\obj\Debug\netcoreapp2.2\Shop.Service.AssemblyInfoInputs.cache
+E:\Subhash\Development\FoodStore-master\FoodStore-master\Shop.Service\obj\Debug\netcoreapp2.2\Shop.Service.AssemblyInfo.cs
+E:\Subhash\Development\FoodStore-master\FoodStore-master\Shop.Service\obj\Debug\netcoreapp2.2\Shop.Service.csproj.CoreCompileInputs.cache
+E:\Subhash\Development\FoodStore-master\FoodStore-master\Shop.Service\obj\Debug\netcoreapp2.2\Shop.Service.csproj.CopyComplete
+E:\Subhash\Development\FoodStore-master\FoodStore-master\Shop.Service\obj\Debug\netcoreapp2.2\Shop.Service.dll
+E:\Subhash\Development\FoodStore-master\FoodStore-master\Shop.Service\obj\Debug\netcoreapp2.2\Shop.Service.pdb

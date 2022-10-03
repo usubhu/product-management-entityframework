@@ -1,0 +1,91 @@
+﻿@model OceanProducts.Web.Models.Category.CategoryTopicModel
+
+<div class="container body-content">
+    <div class="sectionHeader">
+        <div class="sectionHeading">
+            <h3><span id="results">@Model.Category.Name</span><h3/>
+        </div>
+        <div class="row">
+            <div class="col-md-8 sectionDescription">
+     
+                <p>Welcome to the <strong>@Model.Category.Name</strong> section</p>
+              
+            </div>
+            <div class="col-md-4">
+                <form asp-controller="Category" asp-action="Search" method="post">
+                    <div class="searchForm">
+                        <input asp-for="SearchQuery" type="text" placeholder="Search..." class="searchBar" onfocus="clearThis(this)">
+                        <button type="submit" class="btn btn-categorySearch">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </div>
+                    <input asp-for="Category.Id" name="id" type="hidden" />
+                </form>
+            </div>
+        </div>
+      
+            <div class="row">
+                <div class="col-md-11"></div>
+                <div class="col-md-1">
+                    <div class="row" style="margin-bottom:16px;">
+                        <a class="btn btn-default" asp-controller="Category" asp-action="Edit" asp-route-id="@Model.Category.Id">Edit</a>
+                    </div>
+                    <div class="row">
+                        @Html.ActionLink("Delete", "Delete", new { id = @Model.Category.Id },
+                new { onclick = "return confirm('Are sure you want to delete category?');", @class="btn btn-danger" })
+                    </div>
+                </div>
+            </div>
+       
+    </div>
+   
+        <div class="newProduct">
+            <a class="btn btn-block btn-default" asp-controller="Product" asp-action="New" asp-route-categoryId="@Model.Category.Id">New Product</a>
+        </div>
+    
+    <div class="row" id="categoryIndexContent">
+        @if (Model.Products.Any())
+        {
+            <table class="table table-hover table-bordered" id="categoryIndexTable">
+                <tbody>
+                    @foreach (var Product in Model.Products)
+                    {
+                        <tr>
+                            <td>
+                               @Html.Partial("ProductSummary",Product) 
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else if (string.IsNullOrEmpty(@Model.SearchQuery) || string.IsNullOrWhiteSpace(Model.SearchQuery))
+        {
+            <div class="noProducts">
+                <i class="material-icons md-72">question_answer</i>
+                <h3>
+                    No search results found for @Model.SearchQuery! <br />
+                </h3>
+            </div>
+
+        }
+
+        else if (!@Model.Products.Any())
+        {
+            <div class="noProducts">
+                <i class="material-icons md-72">question_answer</i>
+                <h3>
+                    It looks like there are no @Model.Category.Name products yet. <br />
+                </h3>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function clearThis(target) {
+            target.value = "";
+        }
+    </script>
+}

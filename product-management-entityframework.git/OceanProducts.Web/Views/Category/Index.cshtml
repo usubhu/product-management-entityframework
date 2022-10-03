@@ -1,0 +1,69 @@
+﻿@model OceanProducts.Web.Models.Category.CategoryIndexModel
+@using Microsoft.AspNetCore.Identity
+<h1>Product Categories</h1>
+
+
+    <div>
+        <a class="btn btn-block btn-default" asp-controller="Category" asp-action="New">New category</a>
+    </div>
+@if(!Model.CategoryList.Any())
+{
+<h3>It looks like there are no categories right now...</h3>
+}
+else
+{
+    <table class="table table-hover" id="categoryIndexTable">
+        <thead>
+            <tr>
+                <td>
+                    Category Name
+                </td>
+                <td>
+                    Description
+                </td>
+                <td>
+                    Created Date
+                </td>
+                <td>
+                     Updated Date
+                </td>
+                <td colspan="2">
+                    Action
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model.CategoryList)
+            {
+            <tr>
+                <td>
+                  
+                        @category.Name
+                    
+                </td>
+                <td>
+                    @category.Description
+                </td>
+                <td>
+                    @category.CreateTs
+                </td>
+                <td>
+                    @category.UpdateTs
+                </td>
+                <td>
+                    <a class="btn btn-info" asp-controller="Category" asp-action="Edit" asp-route-id="@category.Id">
+                        Edit
+                    </a>
+
+                </td>
+                <td>
+                    <a class="btn btn-info" asp-controller="Category" asp-action="Delete" onclick="return confirm('Are you sure?')" asp-route-id="@category.Id">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+
+            }
+        </tbody>
+    </table>
+}

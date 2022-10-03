@@ -1,0 +1,40 @@
+﻿@model OceanProducts.Web.Models.Product.ProductIndexModel
+
+<div class="container body-content" style="margin-bottom:200px;">
+    <div class="row ProductHeader">
+        <div class="ProductHeading">
+            <span class="ProductIndexName">
+                @Model.Name
+            </span>
+            <br>
+            <span id="headingBtn"><a asp-controller="Category" asp-action="Topic" asp-route-id="@Model.CategoryId" class="btn btn-back">Back to @Model.CategoryName section</a></span>
+        </div>
+    </div>
+
+    <div class="row" id="ProductIndexContent">
+        <div class="col-md-9 ProductContentContainer">
+           
+            <div class="ProductContent">
+                @Html.Raw(Model.Description)
+            </div>
+        </div>
+        @*<div class="col-md-3">
+            <div class="btn-addToCart">
+                <div class="categoryPrice">Price: <input readonly class="form-control" style="outline:none" id="ProductTotal-@(Model.GetHashCode())" value="@Model.UnitPrice"></div>
+               
+                <form asp-controller="ShoppingCart" asp-action="Add"  method="get" class="form-horizontal" role="form" >
+                    <a onclick="changeValue(document.getElementById('amount-input-'+@Model.Id.ToString()),document.getElementById('ProductTotal-@(Model.GetHashCode())'), @Model.Total, 1)"><i class="fas fa-plus-circle"></i></a>
+                    <input id="amount-input-@Model.Id" asp-for="Amount" style="width:20%" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    <a onclick="changeValue(document.getElementById('amount-input-'+@Model.Id.ToString()),document.getElementById('ProductTotal-@(Model.GetHashCode())'), @Model.Total, -1)"><i class="fas fa-minus-circle"></i></a>
+                        <div>
+                            <a class="btn btn-default" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                            @Html.ActionLink("Delete", "Delete", new { id = @Model.Id },
+                                new { onclick = "return confirm('Are sure you want to delete Product?');", @class="btn btn-danger" })
+                        </div>
+                   
+                </form>
+            </div>
+        </div>*@
+    </div>
+</div>
+

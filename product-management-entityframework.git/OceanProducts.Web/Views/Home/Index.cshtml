@@ -1,0 +1,125 @@
+﻿@model OceanProducts.Web.Models.Home.HomeIndexModel
+    <script>
+        function CategoryChange(val) {
+            if (val > 0) {
+                window.location.href = "/Index/" + val;
+            }
+            else {
+                window.location.href = "/";
+            }
+        
+    }
+    </script>
+<div class="container body-content">
+    <div class="row frontPageSplash">
+        <div class="col-md-6 frontPageLearn">
+
+            <p class="frontPageSubHeading">This is online shopping site for Product</p>
+            <div>
+                <form asp-controller="Home" asp-action="Search" method="post">
+                    <div class="form-group">
+                        <label asp-for="CategoryId" class="col-md-3 control-label"></label>
+                        <div class="col-md-6">
+                            @Html.DropDownListFor(model => model.CategoryId, (SelectList)ViewBag.Categories,
+                           " -- All -- ", new { @onchange = "CategoryChange(this.value)" })
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6"></div>
+    </div>
+    @if (Model.ProductsList.Any())
+    {<table class="table table-hover" id="latestProductsTable">
+         <thead class="font-weight-bold">
+             <tr>
+                 <td>
+
+                    Id
+
+                 </td>
+                 <td>
+                     Product Code
+                 </td>
+                 <td>
+                     Product Name
+                 </td>
+                 <td>
+                    Description
+                 </td>
+                 <td>
+                    Mfg. Date
+                 </td>
+                 <td>
+                     Price
+                 </td>
+                 <td>
+                    Activate
+                 </td>
+
+                 <td>
+                     Created Date
+                 </td>
+                 <td>
+                    Updated Date
+                 </td>
+                 <td colspan="2">
+                     
+                   Action
+                 </td>
+             </tr>
+         </thead>
+            <tbody>
+                @foreach (var product in Model.ProductsList)
+                {
+<tr>
+    <td>
+
+        @product.Id
+
+    </td>
+    <td>
+        @product.ProductCode
+    </td>
+    <td>
+        @product.Name
+    </td>
+    <td>
+        @product.Description
+    </td>
+    <td>
+        @product.MfgDate
+    </td>
+    <td>
+        @product.UnitPrice
+    </td>
+    <td>
+        @product.IsActive
+    </td>
+
+    <td>
+        @product.CreateTs
+    </td>
+    <td>
+        @product.UpdateTs
+    </td>
+    <td>
+        <a class="btn btn-info" asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id">
+            Edit
+        </a>
+
+    </td>
+    <td>
+        <a class="btn btn-info" asp-controller="Product" asp-action="Delete" onclick="return confirm('Are you sure?')" asp-route-id="@product.Id">
+            Delete
+        </a>
+    </td>
+</tr>
+}
+            </tbody>
+        </table> }
+    else
+    {
+<h4>It looks like there are no search results...</h4>}
+</div>

@@ -1,0 +1,74 @@
+﻿@model OceanProducts.Web.Models.Product.NewProductModel
+
+<div class="row">
+    <h3 class="text-center" style="margin-bottom:32px;">Fill out the fields to @ViewBag.ActionText Product</h3>
+    <div class="col-md-offset-2 col-md-10">
+        <div class="row orderForm ">
+            
+            <form asp-action="@ViewBag.Action" method="post" class="form-horizontal col-md-8" role="form">
+                <div class="form-group">
+                    <label asp-for="ProductCode" class="col-md-3 control-label"></label>
+                    <div class="col-md-6">
+                        <input asp-for="ProductCode" class="form-control" />
+                        <span asp-validation-for="ProductCode" class="text-danger"></span>
+                        <span class="text-danger">@ViewBag.ErrorMessage</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="col-md-3 control-label"></label>
+                    <div class="col-md-6">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="col-md-3 control-label"></label>
+                    <div class="col-md-6">
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Price" class="col-md-3 control-label"></label>
+                    <div class="col-md-6">
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="IsActive" class="col-md-3 control-label"></label>
+                    <div class="col-md-6">
+                        @Html.RadioButtonFor(model => model.IsActive, "true") Yes
+                        @Html.RadioButtonFor(model => model.IsActive, "false") No
+                        <span asp-validation-for="IsActive" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CategoryId" class="col-md-3 control-label"></label>
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(model => model.CategoryId, (SelectList)ViewBag.Categories, " -- Select Category -- ")
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="btn-group col-md-4">
+                        @if (ViewBag.RouteId == null || ViewBag.RouteId == 0)
+                        {
+            <a class="btn btn-default" asp-action="@ViewBag.CancelAction" asp-controller="@ViewBag.ControllerName">Cancel</a> }
+                        else
+                        {
+            <a class="btn btn-default" asp-action="@ViewBag.CancelAction" asp-controller="@ViewBag.ControllerName" asp-route-id="@ViewBag.RouteId">Cancel</a>}
+                    </div>
+                    <div class="btn-group col-md-offset-4 col-md-4">
+                        <input class="btn btn-success" type="submit" value="@ViewBag.SubmitText" />
+                    </div>
+                </div>
+
+            </form>
+           
+        </div>
+    </div>
+</div>

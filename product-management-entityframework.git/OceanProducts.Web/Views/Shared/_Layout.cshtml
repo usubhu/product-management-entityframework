@@ -1,0 +1,85 @@
+﻿@using Microsoft.AspNetCore.Identity
+@*@using OceanProducts.Data.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager*@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BuyNow - Online Product store</title>
+
+    <environment include="Development">
+        <!-- <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" /> -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<body class="@ViewBag.BodyClass d-flex flex-column h-100">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #f8f8f8;">
+        <a asp-controller="Home" asp-action="Index" class="navbar-brand">
+            <img src="/images/logo.png" width="50px" height="50px">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor03">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" asp-controller="Category" asp-action="Index">Categories</a>
+            </li>
+           
+              
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Product" asp-action="New">New Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Category" asp-action="New">New Category</a>
+                </li>
+               
+           
+        </ul>
+       
+        </div>
+    </nav>
+    <div class="container body-content flex-shrink-0">
+        @RenderBody()
+    </div>
+<!-- Footer -->
+    <footer id="myFooter" class="page-footer">
+        <div class="container">
+            <div class="row">
+               
+                <div class="col-sm-2">
+                    
+                    <ul>
+                        <li><a asp-action="Index" asp-controller="Home">Home</a></li>
+                      
+                    </ul>
+                </div>
+             
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>© Online Product Shop </p>
+        </div>
+    </footer>
+<!-- Footer -->
+
+    @RenderSection("Scripts", required: false)
+</body>
+
